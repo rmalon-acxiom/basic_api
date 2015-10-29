@@ -13,10 +13,11 @@ app.use(function (req, res, next) {
 app.post('/', function (req, res, next) {
 	count++
 	console.log(req.body)
+	body = JSON.parse(req.body)
 	var dt = new Date();
-	req.body.count = count
-	req.body.date = dt.toUTCString();
-	res.send(req.body)
+	body.count = count
+	body.date = dt.toUTCString();
+	res.send(body)
 })
 
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8000;
