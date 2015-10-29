@@ -3,17 +3,17 @@ var count = 0,
 	bodyParser = require('body-parser'),
 	app = express();
 
-app.use(bodyParser.json());
+
 app.use(function (req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
 });
+app.use(bodyParser.json());
 
 app.post('/', function (req, res, next) {
 	count++
-	console.log(req.body)
-	body = JSON.parse(req.body)
+	body = req.body
 	var dt = new Date();
 	body.count = count
 	body.date = dt.toUTCString();
