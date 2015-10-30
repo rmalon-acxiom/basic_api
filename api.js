@@ -25,6 +25,9 @@ app.get('/', function (req, res, next) {
 	count++
 	var url_parts = url.parse(req.url, true);
 	var query = url_parts.query;
+	var dt = new Date();
+	query.count = count
+	query.date = dt.toUTCString();
 	res.send(query)
 })
 
