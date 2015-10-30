@@ -23,9 +23,8 @@ app.post('/', function (req, res, next) {
 
 app.get('/', function (req, res, next) {
 	count++
-	var url_parts = url.parse(request.url, true);
+	var url_parts = url.parse(req.url, true);
 	var query = url_parts.query;
-	console.log(query)
 	res.send(query)
 })
 
