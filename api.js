@@ -1,6 +1,7 @@
 var count = 0,
 	express = require('express'),
 	bodyParser = require('body-parser'),
+	url = require('url'),
 	app = express();
 
 
@@ -18,6 +19,14 @@ app.post('/', function (req, res, next) {
 	body.count = count
 	body.date = dt.toUTCString();
 	res.send(body)
+})
+
+app.get('/', function (req, res, next) {
+	count++
+	var url_parts = url.parse(request.url, true);
+	var query = url_parts.query;
+	console.log(query)
+	res.send(query)
 })
 
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8000;
